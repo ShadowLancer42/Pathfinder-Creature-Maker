@@ -1,0 +1,17 @@
+{
+  description = "",
+  name = "",
+  traits = [],
+  perception = "",
+  senses = "",
+  skills = "",
+  abilityScores = [Str:"", Dex:"", Con:"", Int:"", Wis:"", Cha:""],
+  ac = "",
+  throws = [],
+  hp = "",
+  speed = "",
+  attacks = [],
+  spells = "",
+  inventory = "",
+  ps = "",
+}
