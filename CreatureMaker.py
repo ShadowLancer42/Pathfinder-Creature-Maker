@@ -193,9 +193,9 @@ inventory = input("\n\nEnter your creature's inventory\n")
 
 ps = input("\n\nEnter your post scriptum. This is for anything you want to add to the end of the page.\n\n")
 
+outputName = input("\n\nplease name your pdf (don't include the .pdf at the end)\n")
 
 doPdf()
 
-outputName = input("\n\nplease name your pdf (don't include the .pdf at the end)\n")
 
 pdf.output(myDir+outputName+'.pdf')
