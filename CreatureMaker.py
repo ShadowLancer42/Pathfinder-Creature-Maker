@@ -24,6 +24,10 @@ speed = ''
 
 attacks = []
 
+f = open("SaveDirectory.txt", 'r')
+myDir = f.read()
+f.close()
+
 
 #funcs
 def convert(string):
@@ -101,6 +105,8 @@ def doPdf():
     pdf.cell(10, 10, "", ln=1)
  """
 
+
+#program
 input("Welcome to Pathfinder creature maker! Press Enter to begin!\n")
 
 name = input("What would you like to name your Creature?\n")
@@ -127,7 +133,7 @@ input("enter creature speed\n")
 
 method = input("would you like to enter the attacks through the terminal or through a txt document that will be created on your desktop?\n(1) - terminal\n(2) - txt document\n")
 
-myDir = "C:/Users/glewi/OneDrive/Desktop/"
+
 #enter through text document
 if method == '2':
     # the desktop
