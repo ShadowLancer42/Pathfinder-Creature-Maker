@@ -199,3 +199,5 @@ doPdf()
 
 
 pdf.output(myDir+outputName+'.pdf')
+
+input("press enter to close program\n")
