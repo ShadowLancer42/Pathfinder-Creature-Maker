@@ -1,1 +1,1 @@
-C:/Users/glewi/OneDrive/Desktop/
+Enter the directory for where you would like the pdf to be saved: (ex. C://Users/David/Desktop)

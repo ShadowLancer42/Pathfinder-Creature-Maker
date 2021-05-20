@@ -160,9 +160,9 @@ hp = input("\n\nenter creature hp\n")
 
 speed = input("\n\nenter creature speed\n")
 
-method = input("\n\nwould you like to enter the attacks through the terminal or through a txt document that will be created on your desktop?\n(1) - terminal\n(2) - txt document\n")
+method = '1'
 
-
+"""
 #enter through text document
 if method == '2':
     # the desktop
@@ -180,7 +180,7 @@ if method == '2':
     input("We've created a file called '"+fileName+"' on your desktop. Please write out each attack, seperated by pressing enter twice. When you're done, press enter here in the terminal.\n")
     f.open(myDir+fileName, 'r')
     attacks = convert2(f.read())
-
+"""
 #enter through terminal
 if method == '1':
     loop = int(input("\n\nhow many attacks does the creature have?\n"))
