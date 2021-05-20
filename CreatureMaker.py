@@ -5,34 +5,39 @@ from os import path
 #vars
 pdf = FPDF('P', 'mm', 'letter')
 
-desc = ''
+def getJson():
+f = open("input.JSON", 'r')
+myJson = f.read()
+f.close()
 
-name = ""
-traits = []
+desc = myJson.description
 
-perception = ''
-senses = ""
+name = myJson.name
+traits = myJson.traits
 
-skills = ""
+perception = myJson.perception
+senses = myJson.senses
+
+skills = myJson.skills
 
 abNames = ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha']
-abScrs = []
+abScrs = myJson.abilityScores
 
-ac = ''
+ac = myJson.ac
 
-throws = []
+throws = myJson.throws
 
-hp = ''
+hp = myJson.hp
 
-speed = ''
+speed = myJson.hp
 
-attacks = []
+attacks = myJson.attacks
 
-spells = ''
+spells = myJson.spells
 
-inventory = ''
+inventory = myJson.inventory
 
-ps = ''
+ps = myJson.ps
 
 f = open("SaveDirectory.txt", 'r')
 myDir = f.read()
