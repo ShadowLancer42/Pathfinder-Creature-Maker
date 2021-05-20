@@ -4,6 +4,9 @@
 - This is a tool for Pathfinder 2e, but if you can make some kind of use of it in some other situation, feel free.
 
     + There are still a few features that don't work, and it's not the most self explanatory. I will be making a wiki page on this repo to explain how to use it, and hopefully show what does and doesn't work (unless I just fix everything haha).
+<hr>
+
+***See the Wiki to see an example of what it makes!***
 
 If u have any questions, email me!
 
