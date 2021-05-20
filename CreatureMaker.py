@@ -5,6 +5,8 @@ from os import path
 #vars
 pdf = FPDF('P', 'mm', 'letter')
 
+desc = ''
+
 name = ""
 traits = []
 
@@ -25,6 +27,12 @@ hp = ''
 speed = ''
 
 attacks = []
+
+spells = ''
+
+inventory = ''
+
+ps = ''
 
 f = open("SaveDirectory.txt", 'r')
 myDir = f.read()
@@ -55,15 +63,27 @@ def doPdf():
     pdf.cell(80)
     pdf.cell(20, 10, '-------------------------------------', 0, 1, 'C')
 
-    pdf.set_font_size(26)
+    
     #line break
     pdf.multi_cell(w=20, h=10, txt="\n\n", ln=1)
 
 
-    #text
+    #description
+    
+    #font size
+    pdf.set_font_size(12)
+
+    #print a description if one exists
+    if (desc != ''):
+        pdf.multi_cell(0, 5, desc+'\n\n', ln=1)
+
+    #big font size
+    pdf.set_font_size(26)
+
+    #name
     pdf.cell(200, 10, name, 1, 1)
 
-    #font size
+    #small font size
     pdf.set_font_size(12)
 
     #traits
@@ -97,45 +117,50 @@ def doPdf():
     #print the attacks (can print as many as you want)
     for i in range(len(attacks)):
         pdf.multi_cell(0, 5, '\n'+attacks[i], ln=1)
-
-    """ 
-    pdf.cell(10, 10, attacks[0], ln=1)
-    pdf.cell(10, 10, attacks[1], ln=1)
-    pdf.cell(10, 10, "", ln=1)
-    pdf.cell(10, 10, "", ln=1)
-    pdf.cell(10, 10, "", ln=1)
-    pdf.cell(10, 10, "", ln=1)
- """
+    #vertical line
+    pdf.cell(10, 10, '-'*100, ln=1)
+    #spells
+    if (spells != ''):
+        pdf.multi_cell(0, 5, 'spells: '+spells+'\n\n', ln=1)
+    #inventory
+    if (inventory != ''):
+        pdf.multi_cell(0, 5, 'inventory: '+inventory+'\n\n', ln=1)
+    #post scriptum
+    if (ps != ''):
+        pdf.multi_cell(0, 5, ps, ln=1)
 
 
 #program
 input("Welcome to Pathfinder creature maker! Press Enter to begin!\n")
 
 name = input("What would you like to name your Creature?\n")
-traits = convert(input("What traits does your creature have? Please seperate each item by a space and comma.\n"))
 
-perception = input("Perception? Be sure to add the '+' or '-'.\n")
-senses = input("enter the senses\n")
+desc = input("\n\nEnter a description for your creature (this is displayed above the creature name)\n")
 
-skills = input("enter your creature's skills.\n")
+traits = convert(input("\n\nWhat traits does your creature have? Please seperate each item by a space and comma.\n"))
 
-print("enter your ability score bonuses (ex: +3). Be sure to include the '+' or '-':\n\n")
+perception = input("\n\nPerception? Be sure to add the '+' or '-'.\n")
+senses = input("\n\nenter the senses\n")
+
+skills = input("\n\nenter your creature's skills.\n")
+
+print("\n\nenter your ability score bonuses (ex: +3). Be sure to include the '+' or '-':\n\n")
 for i in range(len(abNames)):
     abScrs.append(input(abNames[i]+' '))
 
-ac = input("enter creature AC.\n")
+ac = input("\n\nenter creature AC.\n")
 
-print("enter your saving throw values. Once again remember to include the '+' or '-':\n")
+print("\n\nenter your saving throw values. Once again remember to include the '+' or '-':\n")
 
 throws.append(input("Fortitude: "))
 throws.append(input("Reflex: "))
 throws.append(input("Will: "))
 
-hp = input("enter creature hp\n")
+hp = input("\n\nenter creature hp\n")
 
-input("enter creature speed\n")
+speed = input("\n\nenter creature speed\n")
 
-method = input("would you like to enter the attacks through the terminal or through a txt document that will be created on your desktop?\n(1) - terminal\n(2) - txt document\n")
+method = input("\n\nwould you like to enter the attacks through the terminal or through a txt document that will be created on your desktop?\n(1) - terminal\n(2) - txt document\n")
 
 
 #enter through text document
@@ -158,13 +183,19 @@ if method == '2':
 
 #enter through terminal
 if method == '1':
-    loop = int(input("how many attacks does the creature have?\n"))
+    loop = int(input("\n\nhow many attacks does the creature have?\n"))
     for i in range(loop):
-        attacks.append(input("enter attack "+str(i+1)+'\n'))
+        attacks.append(input("\n\nenter attack "+str(i+1)+'\n'))
+
+spells = input("\n\nEnter your creature's spells\n")
+
+inventory = input("\n\nEnter your creature's inventory\n")
+
+ps = input("\n\nEnter your post scriptum. This is for anything you want to add to the end of the page.\n\n")
 
 
 doPdf()
 
-outputName = input("please name your pdf (don't include the .pdf at the end)\n")
+outputName = input("\n\nplease name your pdf (don't include the .pdf at the end)\n")
 
 pdf.output(myDir+outputName+'.pdf')
