@@ -20,6 +20,8 @@ ac = ''
 
 throws = []
 
+hp = ''
+
 speed = ''
 
 attacks = []
@@ -72,7 +74,7 @@ def doPdf():
     pdf.multi_cell(w=20, h=10, txt="\n", ln=1)
 
     #stats
-    pdf.multi_cell(0, 10, "Perception +"+perception+'; '+senses, ln=1)
+    pdf.multi_cell(0, 10, "Perception "+perception+'; '+senses, ln=1)
     pdf.multi_cell(0, 10, "Skills: "+skills, ln=1)
 
     for i in range(6):
@@ -88,7 +90,7 @@ def doPdf():
     #vertical line
     pdf.cell(10, 10, '-'*100, ln=1)
     pdf.cell(10, 10, "AC: "+ac+'; Fort '+throws[0]+', Ref '+throws[1]+', Will '+throws[2], ln=1)
-    pdf.cell(10, 10, "HP 24", ln=1)
+    pdf.cell(10, 10, "HP "+hp, ln=1)
     #vertical line
     pdf.cell(10, 10, '-'*100, ln=1)
     pdf.cell(10, 10, "Speed: "+speed, ln=1)
@@ -128,6 +130,8 @@ print("enter your saving throw values. Once again remember to include the '+' or
 throws.append(input("Fortitude: "))
 throws.append(input("Reflex: "))
 throws.append(input("Will: "))
+
+hp = input("enter creature hp\n")
 
 input("enter creature speed\n")
 
