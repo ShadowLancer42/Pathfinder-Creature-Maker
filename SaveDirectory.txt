@@ -1,3 +1,0 @@
-Delete this text and replace it with the directory you would like the pdf to be saved to (ex: C://Users/David/Desktop/)
-
-IT IS IMPORTANT THAT YOU ADD THE '/' AT THE END OF THE DIRECTORY!
