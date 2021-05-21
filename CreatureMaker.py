@@ -1,42 +1,53 @@
 from fpdf import FPDF
 import os.path
 from os import path
+import json
+
+#pre-startup
+input("Welcome to Pathfinder creature maker! Press Enter once you have entered all your desired values into the 'input.JSON' file\n")
 
 #vars
 pdf = FPDF('P', 'mm', 'letter')
+#region
+f = open("input.JSON", 'r')
+myJson = f.read()
+f.close()
 
-desc = ''
+#convert json to python dict so that the program can read it.
+myJson = json.loads(myJson)
 
-name = ""
-traits = []
+#start adding json values to python variables
+desc = myJson["description"]
 
-perception = ''
-senses = ""
+name = myJson["name"]
+traits = myJson["traits"]
 
-skills = ""
+perception = myJson["perception"]
+senses = myJson["senses"]
+
+skills = myJson["skills"]
 
 abNames = ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha']
-abScrs = []
+abScrs = myJson["abilityScores"]
 
-ac = ''
+ac = myJson["ac"]
 
-throws = []
+throws = myJson["throws"]
 
-hp = ''
+hp = myJson["hp"]
 
-speed = ''
+speed = myJson["speed"]
 
-attacks = []
+attacks = myJson["attacks"]
 
-spells = ''
+spells = myJson["spells"]
 
-inventory = ''
+inventory = myJson["inventory"]
 
-ps = ''
+ps = myJson["ps"]
 
-f = open("SaveDirectory.txt", 'r')
-myDir = f.read()
-f.close()
+myDir = myJson["saveDirectory"]
+#endregion
 
 
 #funcs
@@ -131,8 +142,10 @@ def doPdf():
 
 
 #program
-input("Welcome to Pathfinder creature maker! Press Enter to begin!\n")
 
+#depricated
+#region
+"""
 name = input("What would you like to name your Creature?\n")
 
 desc = input("\n\nEnter a description for your creature (this is displayed above the creature name)\n")
@@ -163,6 +176,8 @@ speed = input("\n\nenter creature speed\n")
 method = '1'
 
 """
+
+"""
 #enter through text document
 if method == '2':
     # the desktop
@@ -181,6 +196,7 @@ if method == '2':
     f.open(myDir+fileName, 'r')
     attacks = convert2(f.read())
 """
+"""
 #enter through terminal
 if method == '1':
     loop = int(input("\n\nhow many attacks does the creature have?\n"))
@@ -192,11 +208,12 @@ spells = input("\n\nEnter your creature's spells\n")
 inventory = input("\n\nEnter your creature's inventory\n")
 
 ps = input("\n\nEnter your post scriptum. This is for anything you want to add to the end of the page.\n\n")
+"""
+#endregion
 
 outputName = input("\n\nplease name your pdf (don't include the .pdf at the end)\n")
 
 doPdf()
-
 
 pdf.output(myDir+outputName+'.pdf')
 
