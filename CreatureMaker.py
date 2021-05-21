@@ -16,6 +16,7 @@ f.close()
 #convert json to python dict so that the program can read it.
 myJson = json.loads(myJson)
 
+
 #start adding json values to python variables
 desc = myJson["description"]
 
@@ -45,6 +46,7 @@ spells = myJson["spells"]
 inventory = myJson["inventory"]
 
 ps = myJson["ps"]
+
 
 myDir = myJson["saveDirectory"]
 #endregion
@@ -217,4 +219,6 @@ doPdf()
 
 pdf.output(myDir+outputName+'.pdf')
 
+
 input("press enter to close program\n")
+
