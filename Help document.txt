@@ -1,4 +1,8 @@
-- If it isn't starting: Be sure you have installed Python 3.
+THE MOST LIKELY REASON IT ISN'T WORKING IS BECAUSE YOU FORGOT TO SET YOUR DIRECTORY CORRECTLY!
+
+MAKE SURE YOU HAVE SET A VALID DIRECTORY WITH A '/' AT THE END, AND YOU USED FORWARD-SLASHES (/), NOT BACK-SLASHES (\)
+
+- If it isn't starting: Be sure you have installed Python 3 and all required dependencies (check the top for everything I've imported).
 
 - If it still isn't working: Try running it through the terminal (look up 'how to run a file through the command terminal')
 
