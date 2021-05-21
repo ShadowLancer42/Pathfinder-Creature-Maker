@@ -1,47 +1,55 @@
 from fpdf import FPDF
 import os.path
 from os import path
+import json
+
+#pre-startup
+input("Welcome to Pathfinder creature maker! Press Enter once you have entered all your desired values into the 'input.JSON' file\n")
 
 #vars
 pdf = FPDF('P', 'mm', 'letter')
-
-def getJson():
+#region
 f = open("input.JSON", 'r')
 myJson = f.read()
 f.close()
 
-desc = myJson.description
+#convert json to python dict so that the program can read it.
+myJson = json.loads(myJson)
 
-name = myJson.name
-traits = myJson.traits
 
-perception = myJson.perception
-senses = myJson.senses
+#start adding json values to python variables
+desc = myJson["description"]
 
-skills = myJson.skills
+name = myJson["name"]
+traits = myJson["traits"]
+
+perception = myJson["perception"]
+senses = myJson["senses"]
+
+skills = myJson["skills"]
 
 abNames = ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha']
-abScrs = myJson.abilityScores
+abScrs = myJson["abilityScores"]
 
-ac = myJson.ac
+ac = myJson["ac"]
 
-throws = myJson.throws
+throws = myJson["throws"]
 
-hp = myJson.hp
+hp = myJson["hp"]
 
-speed = myJson.hp
+speed = myJson["speed"]
 
-attacks = myJson.attacks
+attacks = myJson["attacks"]
 
-spells = myJson.spells
+spells = myJson["spells"]
 
-inventory = myJson.inventory
+inventory = myJson["inventory"]
 
-ps = myJson.ps
+ps = myJson["ps"]
 
-f = open("SaveDirectory.txt", 'r')
-myDir = f.read()
-f.close()
+
+myDir = myJson["saveDirectory"]
+#endregion
 
 
 #funcs
@@ -136,8 +144,10 @@ def doPdf():
 
 
 #program
-input("Welcome to Pathfinder creature maker! Press Enter to begin!\n")
 
+#depricated
+#region
+"""
 name = input("What would you like to name your Creature?\n")
 
 desc = input("\n\nEnter a description for your creature (this is displayed above the creature name)\n")
@@ -165,9 +175,11 @@ hp = input("\n\nenter creature hp\n")
 
 speed = input("\n\nenter creature speed\n")
 
-method = input("\n\nwould you like to enter the attacks through the terminal or through a txt document that will be created on your desktop?\n(1) - terminal\n(2) - txt document\n")
+method = '1'
 
+"""
 
+"""
 #enter through text document
 if method == '2':
     # the desktop
@@ -185,7 +197,8 @@ if method == '2':
     input("We've created a file called '"+fileName+"' on your desktop. Please write out each attack, seperated by pressing enter twice. When you're done, press enter here in the terminal.\n")
     f.open(myDir+fileName, 'r')
     attacks = convert2(f.read())
-
+"""
+"""
 #enter through terminal
 if method == '1':
     loop = int(input("\n\nhow many attacks does the creature have?\n"))
@@ -197,10 +210,15 @@ spells = input("\n\nEnter your creature's spells\n")
 inventory = input("\n\nEnter your creature's inventory\n")
 
 ps = input("\n\nEnter your post scriptum. This is for anything you want to add to the end of the page.\n\n")
+"""
+#endregion
 
 outputName = input("\n\nplease name your pdf (don't include the .pdf at the end)\n")
 
 doPdf()
 
-
 pdf.output(myDir+outputName+'.pdf')
+
+
+input("press enter to close program\n")
+

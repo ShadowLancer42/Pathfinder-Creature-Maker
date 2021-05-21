@@ -1,0 +1,33 @@
+{
+  "description":"",
+  "name":"",
+  "traits":[
+     
+  ],
+  "perception":"",
+  "senses":"",
+  "skills":"",
+  "abilityScores":[
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+  ],
+  "ac":"",
+  "throws":[
+     "",
+     "",
+     ""
+  ],
+  "hp":"",
+  "speed":"",
+  "attacks":[
+     
+  ],
+  "spells":"",
+  "inventory":"",
+  "ps":"",
+  "saveDirectory":""
+}
